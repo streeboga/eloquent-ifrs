@@ -60,9 +60,9 @@ use IFRS\Exceptions\UnbalancedTransaction;
  * @property Carbon $destroyed_at
  * @property Carbon $deleted_at
  */
-class Transaction extends Model implements Segregatable, Recyclable, Clearable, Assignable
+class Transaction extends Model implements Recyclable, Clearable, Assignable//,  Segregatable
 {
-    use Segregating;
+//    use Segregating;
     use SoftDeletes;
     use Recycling;
     use Clearing;
@@ -134,7 +134,7 @@ class Transaction extends Model implements Segregatable, Recyclable, Clearable, 
     private $assigned = [];
 
     /**
-     * Compound Ledger entries for the transaction 
+     * Compound Ledger entries for the transaction
      *
      * @var array $compoundEntries
      */
@@ -421,14 +421,14 @@ class Transaction extends Model implements Segregatable, Recyclable, Clearable, 
             $this->compoundEntries[
                 Transaction::getCompoundEntrytype($this->credited)
             ][$this->account_id] = floatval($this->main_account_amount);
-    
+
             foreach ($this->lineItems as $lineItem) {
                 $this->compoundEntries[
                     Transaction::getCompoundEntrytype($lineItem->credited)
                 ][$lineItem->account_id] = $lineItem->amount * $lineItem->quantity;
             }
         }
-        
+
         return $this->compoundEntries;
     }
 
@@ -698,12 +698,13 @@ class Transaction extends Model implements Segregatable, Recyclable, Clearable, 
         if ($period->status == ReportingPeriod::ADJUSTING && $this->transaction_type != Transaction::JN) {
             throw new AdjustingReportingPeriod();
         }
-        
-        if (in_array($this->account->account_type, config('ifrs.single_currency')) && 
-            $this->account->currency_id != $this->currency_id && 
-            $this->currency_id != $entity->currency_id) {
-            throw new InvalidCurrency("Transaction", $this->account);
-        }
+
+//        dd($this->account);
+//        if (in_array($this->account->account_type, config('ifrs.single_currency')) &&
+//            $this->account->currency_id != $this->currency_id &&
+//            $this->currency_id != $entity->currency_id) {
+//            throw new InvalidCurrency("Transaction", $this->account);
+//        }
 
         if (!isset($this->currency_id)) {
             $this->currency_id = $this->account->currency_id;
@@ -724,7 +725,7 @@ class Transaction extends Model implements Segregatable, Recyclable, Clearable, 
         if ($this->isDirty('transaction_type') && $this->transaction_type != $this->getOriginal('transaction_type') && !is_null($this->id)) {
             throw new InvalidTransactionType();
         }
-        
+
         $save = parent::save();
         $this->saveLineItems();
 

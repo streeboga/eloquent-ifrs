@@ -30,7 +30,7 @@ trait Segregating
      */
     public static function bootSegregating()
     {
-        static::addGlobalScope(new EntityScope);
+//        static::addGlobalScope(new EntityScope);
 
         static::creating(
             function ($model) {

@@ -40,7 +40,7 @@
 			"IFRS\\": "src"
 		},
 		"classmap": [
-			"database/factories"
+          "database/factories"
 		]
 	},
 	"autoload-dev": {

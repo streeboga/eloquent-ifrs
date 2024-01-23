@@ -33,9 +33,9 @@ use IFRS\Traits\ModelTablePrefix;
  * @property Carbon $destroyed_at
  * @property Carbon $deleted_at
  */
-class Category extends Model implements Segregatable, Recyclable
+class Category extends Model implements Recyclable//, Segregatable
 {
-    use Segregating;
+//    use Segregating;
     use SoftDeletes;
     use Recycling;
     use ModelTablePrefix;

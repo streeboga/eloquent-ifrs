@@ -40,7 +40,7 @@ return [
      |
      */
     'user_model' => 'App\Models\User',
-    
+
     /*
      |--------------------------------------------------------------------------
      | Locales
@@ -52,7 +52,8 @@ return [
      */
     'locales' => [
         'en_GB',
-        'ar_BH'
+        'ar_BH',
+        'ru_RU',
     ],
 
     /*
@@ -60,7 +61,7 @@ return [
      | Forex scale
      |--------------------------------------------------------------------------
      |
-     | The number of decimal places to consider when calculating the difference between two 
+     | The number of decimal places to consider when calculating the difference between two
      | exchange rates
      |
      */
@@ -71,7 +72,7 @@ return [
      | Single Currency account types
      |--------------------------------------------------------------------------
      |
-     | Accounts of the types defined here will reject balances and transactions of a currency  
+     | Accounts of the types defined here will reject balances and transactions of a currency
      | different from the their own
      |
      */
@@ -127,7 +128,7 @@ return [
 
     'account_codes' => [
 
-        // BALANCE SHEET 
+        // BALANCE SHEET
         // =============
 
         // Asset Accounts
@@ -147,7 +148,7 @@ return [
         // Equity Accounts
         Account::EQUITY => 3000, // 3000 - 3999
 
-        // INCOME STATEMENT 
+        // INCOME STATEMENT
         // ================
 
         // Operating Revenue Accounts
@@ -164,7 +165,7 @@ return [
         Account::OVERHEAD_EXPENSE => 7000, // 7000 - 7999
         Account::OTHER_EXPENSE => 8000, // 8000 - 8999
 
-        // RECONCILIATION 
+        // RECONCILIATION
         // ================
 
         // Reconciliation Accounts

@@ -22,6 +22,7 @@ class IFRSServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/ifrs.php', 'ifrs');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang/', 'ifrs');
     }
 
     /**
@@ -33,6 +34,9 @@ class IFRSServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/ifrs.php' => app()->configPath('ifrs.php'),
+        ]);
+        $this->publishes([
+            __DIR__ . '/../lang' => $this->app->langPath('vendor/ifrs'),
         ]);
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');

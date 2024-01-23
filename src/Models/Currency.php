@@ -31,9 +31,9 @@ use IFRS\Traits\Segregating;
  * @property Carbon $destroyed_at
  * @property Carbon $deleted_at
  */
-class Currency extends Model implements Recyclable, Segregatable
+class Currency extends Model implements Recyclable//, Segregatable
 {
-    use Segregating;
+//    use Segregating;
     use SoftDeletes;
     use Recycling;
     use ModelTablePrefix;

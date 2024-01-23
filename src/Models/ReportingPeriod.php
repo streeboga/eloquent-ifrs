@@ -12,6 +12,8 @@ namespace IFRS\Models;
 
 use Carbon\Carbon;
 
+use IFRS\Enums\ReportingPeriodEnum;
+use IFRS\Enums\ReportingPeriodStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -44,9 +46,9 @@ use IFRS\Transactions\JournalEntry;
  * @property Carbon $destroyed_at
  * @property Carbon $deleted_at
  */
-class ReportingPeriod extends Model implements Segregatable, Recyclable
+class ReportingPeriod extends Model implements Recyclable//, Segregatable
 {
-    use Segregating;
+//    use Segregating;
     use SoftDeletes;
     use Recycling;
     use ModelTablePrefix;
@@ -71,6 +73,10 @@ class ReportingPeriod extends Model implements Segregatable, Recyclable
         'calendar_year',
         'status',
         'entity_id',
+    ];
+
+    protected $casts = [
+        'status' => ReportingPeriodStatus::class
     ];
 
     /**

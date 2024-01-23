@@ -35,7 +35,7 @@ use IFRS\Exceptions\InvalidAccountType;
  * @property Carbon $destroyed_at
  * @property Carbon $deleted_at
  */
-class Vat extends Model implements Segregatable, Recyclable
+class Vat extends Model implements Recyclable//, Segregatable,
 {
     use Segregating;
     use SoftDeletes;
