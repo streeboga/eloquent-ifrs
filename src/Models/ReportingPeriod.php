@@ -12,7 +12,6 @@ namespace IFRS\Models;
 
 use Carbon\Carbon;
 
-use IFRS\Enums\ReportingPeriodEnum;
 use IFRS\Enums\ReportingPeriodStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
